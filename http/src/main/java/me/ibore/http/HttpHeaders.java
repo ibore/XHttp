@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
-public final class Headers {
+public final class HttpHeaders {
 
     public static final String TIME_FORMAT_HTTP = "EEE, dd MMM y HH:mm:ss 'GMT'";
     public static final TimeZone TIME_ZONE_GMT = TimeZone.getTimeZone("GMT");

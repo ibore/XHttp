@@ -14,4 +14,5 @@ public interface Callback<T> {
      * exception occurred creating the request or processing the response.
      */
     void onFailure(Call<T> call, Throwable t);
+
 }
