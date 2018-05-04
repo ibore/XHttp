@@ -37,7 +37,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // OKHttp
-    api 'com.squareup.okhttp3:okhttp:3.9.1'
+//    api 'com.squareup.okhttp3:okhttp:3.9.1'
     // 网络请求框架
 //    api 'com.squareup.retrofit2:retrofit:2.3.0'
 //    api 'com.squareup.retrofit2:converter-gson:2.3.0'
