@@ -7,9 +7,9 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class BasicOutData<T extends BasicOutData<T>> implements OutData {
 
-    private ProgressBar<T> mProgressBar;
+    private Progress<T> mProgressBar;
 
-    public T onProgress(ProgressBar<T> progressBar) {
+    public T onProgress(Progress<T> progressBar) {
         this.mProgressBar = new AsyncProgressBar<>(progressBar);
         return (T) this;
     }
@@ -32,14 +32,14 @@ public abstract class BasicOutData<T extends BasicOutData<T>> implements OutData
 
         private OutputStream mWriter;
         private T mOrigin;
-        private ProgressBar<T> mProgressBar;
+        private Progress<T> mProgressBar;
 
         private long mAllLength;
         private long mWriteCount;
         private int mOldProgress;
 
 
-        private ProgressStream(OutputStream writer, T origin, ProgressBar<T> progressBar) {
+        private ProgressStream(OutputStream writer, T origin, Progress<T> progressBar) {
             this.mWriter = writer;
             this.mOrigin = origin;
             this.mProgressBar = progressBar;
@@ -129,13 +129,13 @@ public abstract class BasicOutData<T extends BasicOutData<T>> implements OutData
         }
     }
 
-    private static class AsyncProgressBar<T> implements ProgressBar<T> {
-        private final ProgressBar<T> mProgressBar;
+    private static class AsyncProgressBar<T> implements Progress<T> {
+        private final Progress<T> mProgressBar;
         private final Executor mExecutor;
 
-        public AsyncProgressBar(ProgressBar<T> bar) {
+        public AsyncProgressBar(Progress<T> bar) {
             this.mProgressBar = bar;
-            this.mExecutor = Kalle.getConfig().getMainExecutor();
+            this.mExecutor = XHttp.getConfig().getMainExecutor();
         }
 
         @Override

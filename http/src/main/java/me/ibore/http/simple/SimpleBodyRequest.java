@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import me.ibore.http.BodyRequest;
 import me.ibore.http.Canceller;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Url;
 import me.ibore.http.simple.cache.CacheMode;
 
@@ -17,7 +17,7 @@ import static me.ibore.http.simple.cache.CacheMode.HTTP;
  */
 public class SimpleBodyRequest extends BodyRequest implements SimpleRequest {
 
-    public static SimpleBodyRequest.Api newApi(Url.Builder builder, RequestMethod method) {
+    public static SimpleBodyRequest.Api newApi(Url.Builder builder, Method method) {
         return new SimpleBodyRequest.Api(builder, method);
     }
 
@@ -56,7 +56,7 @@ public class SimpleBodyRequest extends BodyRequest implements SimpleRequest {
 
         private Converter mConverter;
 
-        private Api(Url.Builder builder, RequestMethod method) {
+        private Api(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

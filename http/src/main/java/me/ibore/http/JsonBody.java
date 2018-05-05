@@ -7,7 +7,7 @@ import static me.ibore.http.Headers.VALUE_APPLICATION_JSON;
 public class JsonBody extends StringBody {
     
     public JsonBody(String body) {
-        this(body, Kalle.getConfig().getCharset());
+        this(body, XHttp.getConfig().getCharset());
     }
 
     public JsonBody(String body, Charset charset) {

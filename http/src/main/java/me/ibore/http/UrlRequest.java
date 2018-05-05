@@ -4,7 +4,7 @@ import java.util.List;
 
 public class UrlRequest extends Request {
 
-    public static UrlRequest.Builder newBuilder(Url.Builder builder, RequestMethod method) {
+    public static UrlRequest.Builder newBuilder(Url.Builder builder, Method method) {
         return new UrlRequest.Builder(builder, method);
     }
 
@@ -34,10 +34,10 @@ public class UrlRequest extends Request {
 
         private Url.Builder mUrl;
 
-        protected Api(Url.Builder builder, RequestMethod method) {
+        protected Api(Url.Builder builder, Method method) {
             super(method);
             this.mUrl = builder;
-            this.mUrl.addQuery(Kalle.getConfig().getParams());
+            this.mUrl.addQuery(XHttp.getConfig().getParams());
         }
 
         @Override
@@ -179,7 +179,7 @@ public class UrlRequest extends Request {
 
     public static class Builder extends UrlRequest.Api<UrlRequest.Builder> {
 
-        private Builder(Url.Builder builder, RequestMethod method) {
+        private Builder(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

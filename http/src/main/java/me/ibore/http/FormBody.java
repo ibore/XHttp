@@ -26,7 +26,7 @@ public class FormBody extends BasicOutData<FormBody> implements RequestBody {
     private String mBoundary;
 
     private FormBody(Builder builder) {
-        this.mCharset = builder.mCharset == null ? Kalle.getConfig().getCharset() : builder.mCharset;
+        this.mCharset = builder.mCharset == null ? XHttp.getConfig().getCharset() : builder.mCharset;
         this.mContentType = TextUtils.isEmpty(builder.mContentType) ? VALUE_APPLICATION_FORM : builder.mContentType;
         this.mParams = builder.mParams.build();
         this.mBoundary = createBoundary();

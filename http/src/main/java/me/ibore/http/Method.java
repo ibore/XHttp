@@ -2,7 +2,7 @@ package me.ibore.http;
 
 import java.util.Locale;
 
-public enum RequestMethod {
+public enum Method {
 
     GET("GET"),
 
@@ -22,7 +22,7 @@ public enum RequestMethod {
 
     private final String value;
 
-    RequestMethod(String value) {
+    Method(String value) {
         this.value = value;
     }
 
@@ -45,7 +45,7 @@ public enum RequestMethod {
         }
     }
 
-    public static RequestMethod reverse(String method) {
+    public static Method reverse(String method) {
         method = method.toUpperCase(Locale.ENGLISH);
         switch (method) {
             case "GET": {

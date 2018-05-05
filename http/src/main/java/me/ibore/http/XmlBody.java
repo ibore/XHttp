@@ -7,7 +7,7 @@ import static me.ibore.http.Headers.VALUE_APPLICATION_XML;
 public class XmlBody extends StringBody {
 
     public XmlBody(String body) {
-        this(body, Kalle.getConfig().getCharset());
+        this(body, XHttp.getConfig().getCharset());
     }
 
     public XmlBody(String body, Charset charset) {

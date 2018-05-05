@@ -3,7 +3,7 @@ package me.ibore.http.connect.http;
 import me.ibore.http.BodyRequest;
 import me.ibore.http.Headers;
 import me.ibore.http.Request;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Response;
 import me.ibore.http.Url;
 import me.ibore.http.UrlRequest;
@@ -29,7 +29,7 @@ public class RedirectInterceptor implements Interceptor {
             Headers headers = request.headers();
             headers.remove(KEY_COOKIE);
 
-            RequestMethod method = request.method();
+            Method method = request.method();
             Request newRequest;
             if (method.allowBody()) {
                 newRequest = BodyRequest.newBuilder(url.builder(), method)

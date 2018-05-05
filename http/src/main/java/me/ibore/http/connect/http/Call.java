@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 import me.ibore.http.Request;
 import me.ibore.http.Response;
 import me.ibore.http.connect.Interceptor;
@@ -21,7 +21,7 @@ public class Call {
      * Execute request.
      */
     public Response execute() throws IOException {
-        List<Interceptor> interceptors = new ArrayList<>(Kalle.getConfig().getInterceptor());
+        List<Interceptor> interceptors = new ArrayList<>(XHttp.getConfig().getInterceptor());
         interceptors.add(new ConnectInterceptor());
 
         AppChain chain = new AppChain(interceptors, 0, mRequest);

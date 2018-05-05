@@ -11,13 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 import me.ibore.http.Headers;
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 import me.ibore.http.Request;
 import me.ibore.http.RequestBody;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Response;
 import me.ibore.http.ResponseBody;
-import me.ibore.http.connect.ConnectFactory;
 import me.ibore.http.connect.Connection;
 import me.ibore.http.connect.Interceptor;
 import me.ibore.http.connect.Network;
@@ -42,19 +41,19 @@ import static me.ibore.http.Headers.KEY_SET_COOKIE;
 public class ConnectInterceptor implements Interceptor {
 
     private final CookieManager mCookieManager;
-    private final ConnectFactory mFactory;
+    private final Connection.Factory mFactory;
     private final Network mNetwork;
 
     public ConnectInterceptor() {
-        this.mCookieManager = new CookieManager(Kalle.getConfig().getCookieStore());
-        this.mFactory = Kalle.getConfig().getConnectFactory();
-        this.mNetwork = Kalle.getConfig().getNetwork();
+        this.mCookieManager = new CookieManager(XHttp.getConfig().getCookieStore());
+        this.mFactory = XHttp.getConfig().getConnectFactory();
+        this.mNetwork = XHttp.getConfig().getNetwork();
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        RequestMethod method = request.method();
+        Method method = request.method();
 
         Connection connection;
         if (method.allowBody()) {

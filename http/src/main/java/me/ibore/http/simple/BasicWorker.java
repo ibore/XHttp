@@ -1,7 +1,7 @@
 package me.ibore.http.simple;
 
 import me.ibore.http.Headers;
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 import me.ibore.http.Response;
 import me.ibore.http.exception.NoCacheError;
 import me.ibore.http.exception.ParseError;
@@ -31,8 +31,8 @@ abstract class BasicWorker<T extends SimpleRequest, Succeed, Failed> implements 
         this.mRequest = request;
         this.mSucceed = succeed;
         this.mFailed = failed;
-        this.mCacheStore = Kalle.getConfig().getCacheStore();
-        this.mConverter = request.converter() == null ? Kalle.getConfig().getConverter() : request.converter();
+        this.mCacheStore = XHttp.getConfig().getCacheStore();
+        this.mConverter = request.converter() == null ? XHttp.getConfig().getConverter() : request.converter();
     }
 
     @Override

@@ -4,8 +4,7 @@ import android.os.Build;
 
 import me.ibore.http.Headers;
 import me.ibore.http.Request;
-import me.ibore.http.RequestMethod;
-import me.ibore.http.connect.ConnectFactory;
+import me.ibore.http.Method;
 import me.ibore.http.connect.Connection;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ import javax.net.ssl.SSLSocketFactory;
 import static me.ibore.http.Headers.KEY_CONNECTION;
 import static me.ibore.http.Headers.VALUE_CLOSE;
 
-public class URLConnectionFactory implements ConnectFactory {
+public class URLConnectionFactory implements Connection.Factory {
 
     public static Builder newBuilder() {
         return new Builder();
@@ -55,7 +54,7 @@ public class URLConnectionFactory implements ConnectFactory {
                 ((HttpsURLConnection) connection).setHostnameVerifier(hostnameVerifier);
         }
 
-        RequestMethod method = request.method();
+        Method method = request.method();
         connection.setRequestMethod(method.toString());
         connection.setDoInput(true);
         boolean isAllowBody = isAllowBody(method);
@@ -83,10 +82,10 @@ public class URLConnectionFactory implements ConnectFactory {
         return new URLConnection(connection);
     }
 
-    private boolean isAllowBody(RequestMethod method) {
+    private boolean isAllowBody(Method method) {
         boolean allowRequestBody = method.allowBody();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            return allowRequestBody && method != RequestMethod.DELETE;
+            return allowRequestBody && method != Method.DELETE;
         return allowRequestBody;
     }
 

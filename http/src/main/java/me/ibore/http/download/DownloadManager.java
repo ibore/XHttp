@@ -2,7 +2,7 @@ package me.ibore.http.download;
 
 import me.ibore.http.CancelerManager;
 import me.ibore.http.Canceller;
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 
 import java.util.concurrent.Executor;
 
@@ -25,7 +25,7 @@ public class DownloadManager {
     private final CancelerManager mCancelManager;
 
     private DownloadManager() {
-        this.mExecutor = Kalle.getConfig().getWorkExecutor();
+        this.mExecutor = XHttp.getConfig().getWorkExecutor();
         this.mCancelManager = new CancelerManager();
     }
 
@@ -105,7 +105,7 @@ public class DownloadManager {
 
         AsyncCallback(Callback callback) {
             this.mCallback = callback;
-            this.mExecutor = Kalle.getConfig().getMainExecutor();
+            this.mExecutor = XHttp.getConfig().getMainExecutor();
         }
 
         @Override

@@ -3,7 +3,7 @@ package me.ibore.http.download;
 import android.text.TextUtils;
 
 import me.ibore.http.Headers;
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 import me.ibore.http.Response;
 import me.ibore.http.Url;
 import me.ibore.http.exception.DownloadError;
@@ -195,7 +195,7 @@ public abstract class BasicWorker<T extends Download> implements Callable<String
 
         AsyncProgressBar(Download.ProgressBar bar) {
             this.mProgressBar = bar;
-            this.mExecutor = Kalle.getConfig().getMainExecutor();
+            this.mExecutor = XHttp.getConfig().getMainExecutor();
         }
 
         @Override

@@ -9,22 +9,22 @@ import me.ibore.http.simple.RequestManager;
 import me.ibore.http.simple.SimpleBodyRequest;
 import me.ibore.http.simple.SimpleUrlRequest;
 
-public final class Kalle {
+public final class XHttp {
 
-    private static KalleConfig sConfig;
+    private static XHttpConfig sConfig;
 
-    public static void setConfig(KalleConfig config) {
+    public static void setConfig(XHttpConfig config) {
         if (sConfig == null) sConfig = config;
         else {
             Log.w("Kalle", new IllegalStateException("Illegal operation, only allowed to configure once."));
         }
     }
 
-    public static KalleConfig getConfig() {
+    public static XHttpConfig getConfig() {
         if (sConfig == null) {
-            synchronized (KalleConfig.class) {
+            synchronized (XHttpConfig.class) {
                 if (sConfig == null) {
-                    sConfig = KalleConfig.newBuilder().build();
+                    sConfig = XHttpConfig.newBuilder().build();
                 }
             }
         }
@@ -32,35 +32,35 @@ public final class Kalle {
     }
 
     public static SimpleUrlRequest.Api get(String url) {
-        return SimpleUrlRequest.newApi(Url.newBuilder(url), RequestMethod.GET);
+        return SimpleUrlRequest.newApi(Url.newBuilder(url), Method.GET);
     }
 
     public static SimpleUrlRequest.Api head(String url) {
-        return SimpleUrlRequest.newApi(Url.newBuilder(url), RequestMethod.HEAD);
+        return SimpleUrlRequest.newApi(Url.newBuilder(url), Method.HEAD);
     }
 
     public static SimpleUrlRequest.Api options(String url) {
-        return SimpleUrlRequest.newApi(Url.newBuilder(url), RequestMethod.OPTIONS);
+        return SimpleUrlRequest.newApi(Url.newBuilder(url), Method.OPTIONS);
     }
 
     public static SimpleUrlRequest.Api trace(String url) {
-        return SimpleUrlRequest.newApi(Url.newBuilder(url), RequestMethod.TRACE);
+        return SimpleUrlRequest.newApi(Url.newBuilder(url), Method.TRACE);
     }
 
     public static SimpleBodyRequest.Api post(String url) {
-        return SimpleBodyRequest.newApi(Url.newBuilder(url), RequestMethod.POST);
+        return SimpleBodyRequest.newApi(Url.newBuilder(url), Method.POST);
     }
 
     public static SimpleBodyRequest.Api put(String url) {
-        return SimpleBodyRequest.newApi(Url.newBuilder(url), RequestMethod.PUT);
+        return SimpleBodyRequest.newApi(Url.newBuilder(url), Method.PUT);
     }
 
     public static SimpleBodyRequest.Api patch(String url) {
-        return SimpleBodyRequest.newApi(Url.newBuilder(url), RequestMethod.PATCH);
+        return SimpleBodyRequest.newApi(Url.newBuilder(url), Method.PATCH);
     }
 
     public static SimpleBodyRequest.Api delete(String url) {
-        return SimpleBodyRequest.newApi(Url.newBuilder(url), RequestMethod.DELETE);
+        return SimpleBodyRequest.newApi(Url.newBuilder(url), Method.DELETE);
     }
 
     public static void cancel(Object tag) {
@@ -70,35 +70,35 @@ public final class Kalle {
     public static class Download {
 
         public static UrlDownload.Api get(String url) {
-            return UrlDownload.newApi(Url.newBuilder(url), RequestMethod.GET);
+            return UrlDownload.newApi(Url.newBuilder(url), Method.GET);
         }
 
         public static UrlDownload.Api head(String url) {
-            return UrlDownload.newApi(Url.newBuilder(url), RequestMethod.HEAD);
+            return UrlDownload.newApi(Url.newBuilder(url), Method.HEAD);
         }
 
         public static UrlDownload.Api options(String url) {
-            return UrlDownload.newApi(Url.newBuilder(url), RequestMethod.OPTIONS);
+            return UrlDownload.newApi(Url.newBuilder(url), Method.OPTIONS);
         }
 
         public static UrlDownload.Api trace(String url) {
-            return UrlDownload.newApi(Url.newBuilder(url), RequestMethod.TRACE);
+            return UrlDownload.newApi(Url.newBuilder(url), Method.TRACE);
         }
 
         public static BodyDownload.Api post(String url) {
-            return BodyDownload.newApi(Url.newBuilder(url), RequestMethod.POST);
+            return BodyDownload.newApi(Url.newBuilder(url), Method.POST);
         }
 
         public static BodyDownload.Api put(String url) {
-            return BodyDownload.newApi(Url.newBuilder(url), RequestMethod.PUT);
+            return BodyDownload.newApi(Url.newBuilder(url), Method.PUT);
         }
 
         public static BodyDownload.Api patch(String url) {
-            return BodyDownload.newApi(Url.newBuilder(url), RequestMethod.PATCH);
+            return BodyDownload.newApi(Url.newBuilder(url), Method.PATCH);
         }
 
         public static BodyDownload.Api delete(String url) {
-            return BodyDownload.newApi(Url.newBuilder(url), RequestMethod.DELETE);
+            return BodyDownload.newApi(Url.newBuilder(url), Method.DELETE);
         }
 
         public static void cancel(Object tag) {
@@ -106,6 +106,6 @@ public final class Kalle {
         }
     }
 
-    private Kalle() {
+    private XHttp() {
     }
 }

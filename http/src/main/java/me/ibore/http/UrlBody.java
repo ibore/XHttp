@@ -23,7 +23,7 @@ public class UrlBody extends BasicOutData<StringBody> implements RequestBody {
 
     private UrlBody(Builder builder) {
         this.mParams = builder.mParams.build();
-        this.mCharset = builder.mCharset == null ? Kalle.getConfig().getCharset() : builder.mCharset;
+        this.mCharset = builder.mCharset == null ? XHttp.getConfig().getCharset() : builder.mCharset;
         this.mContentType = TextUtils.isEmpty(builder.mContentType) ? VALUE_APPLICATION_URLENCODED : builder.mContentType;
     }
 

@@ -20,7 +20,7 @@ public class StringBody extends BasicOutData<StringBody> implements RequestBody 
     private final String mContentType;
 
     public StringBody(String body) {
-        this(body, Kalle.getConfig().getCharset());
+        this(body, XHttp.getConfig().getCharset());
     }
 
     public StringBody(String body, Charset charset) {
@@ -28,7 +28,7 @@ public class StringBody extends BasicOutData<StringBody> implements RequestBody 
     }
 
     public StringBody(String body, String contentType) {
-        this(body, Kalle.getConfig().getCharset(), contentType);
+        this(body, XHttp.getConfig().getCharset(), contentType);
     }
 
     public StringBody(String body, Charset charset, String contentType) {

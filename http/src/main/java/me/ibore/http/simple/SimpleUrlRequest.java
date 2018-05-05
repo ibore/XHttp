@@ -3,7 +3,7 @@ package me.ibore.http.simple;
 import android.text.TextUtils;
 
 import me.ibore.http.Canceller;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Url;
 import me.ibore.http.UrlRequest;
 import me.ibore.http.simple.cache.CacheMode;
@@ -14,7 +14,7 @@ import static me.ibore.http.simple.cache.CacheMode.HTTP;
 
 public class SimpleUrlRequest extends UrlRequest implements SimpleRequest {
 
-    public static SimpleUrlRequest.Api newApi(Url.Builder builder, RequestMethod method) {
+    public static SimpleUrlRequest.Api newApi(Url.Builder builder, Method method) {
         return new SimpleUrlRequest.Api(builder, method);
     }
 
@@ -53,7 +53,7 @@ public class SimpleUrlRequest extends UrlRequest implements SimpleRequest {
 
         private Converter mConverter;
 
-        private Api(Url.Builder builder, RequestMethod method) {
+        private Api(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

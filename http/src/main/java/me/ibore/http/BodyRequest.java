@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BodyRequest extends Request {
 
-    public static BodyRequest.Builder newBuilder(Url.Builder builder, RequestMethod method) {
+    public static BodyRequest.Builder newBuilder(Url.Builder builder, Method method) {
         return new BodyRequest.Builder(builder, method);
     }
 
@@ -45,12 +45,12 @@ public class BodyRequest extends Request {
         private Params.Builder mParams;
         private RequestBody mBody;
 
-        protected Api(Url.Builder builder, RequestMethod method) {
+        protected Api(Url.Builder builder, Method method) {
             super(method);
             this.mUrlBuilder = builder;
             this.mParams = Params.newBuilder();
 
-            this.mParams.add(Kalle.getConfig().getParams());
+            this.mParams.add(XHttp.getConfig().getParams());
         }
 
         @Override
@@ -327,7 +327,7 @@ public class BodyRequest extends Request {
 
     public static class Builder extends BodyRequest.Api<BodyRequest.Builder> {
 
-        private Builder(Url.Builder builder, RequestMethod method) {
+        private Builder(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

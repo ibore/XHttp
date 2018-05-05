@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
+import me.ibore.http.Request;
+
 public interface Connection extends Closeable {
 
     /**
@@ -29,4 +31,12 @@ public interface Connection extends Closeable {
      */
     InputStream getInputStream() throws IOException;
 
+
+    public interface Factory {
+        /**
+         * According to the request attribute,
+         * and the server to establish a connection.
+         */
+        Connection connect(Request request) throws IOException;
+    }
 }

@@ -2,12 +2,12 @@ package me.ibore.http.download;
 
 import me.ibore.http.BodyRequest;
 import me.ibore.http.Canceller;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Url;
 
 public class BodyDownload extends BodyRequest implements Download {
 
-    public static BodyDownload.Api newApi(Url.Builder builder, RequestMethod method) {
+    public static BodyDownload.Api newApi(Url.Builder builder, Method method) {
         return new BodyDownload.Api(builder, method);
     }
 
@@ -53,7 +53,7 @@ public class BodyDownload extends BodyRequest implements Download {
         private ProgressBar mProgressBar;
         private Policy mPolicy;
 
-        private Api(Url.Builder builder, RequestMethod method) {
+        private Api(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

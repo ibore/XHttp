@@ -1,6 +1,6 @@
 package me.ibore.http;
 
-public interface ProgressBar<T> {
+public interface Progress<T> {
     /**
      * Progress has changed.
      */

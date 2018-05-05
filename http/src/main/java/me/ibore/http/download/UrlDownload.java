@@ -1,13 +1,13 @@
 package me.ibore.http.download;
 
 import me.ibore.http.Canceller;
-import me.ibore.http.RequestMethod;
+import me.ibore.http.Method;
 import me.ibore.http.Url;
 import me.ibore.http.UrlRequest;
 
 public class UrlDownload extends UrlRequest implements Download {
 
-    public static UrlDownload.Api newApi(Url.Builder builder, RequestMethod method) {
+    public static UrlDownload.Api newApi(Url.Builder builder, Method method) {
         return new UrlDownload.Api(builder, method);
     }
 
@@ -53,7 +53,7 @@ public class UrlDownload extends UrlRequest implements Download {
         private ProgressBar mProgressBar;
         private Policy mPolicy;
 
-        private Api(Url.Builder builder, RequestMethod method) {
+        private Api(Url.Builder builder, Method method) {
             super(builder, method);
         }
 

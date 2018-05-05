@@ -1,6 +1,6 @@
 package me.ibore.http;
 
-import me.ibore.http.connect.ConnectFactory;
+import me.ibore.http.connect.Connection;
 import me.ibore.http.connect.Interceptor;
 import me.ibore.http.connect.Network;
 import me.ibore.http.cookie.CookieStore;
@@ -35,7 +35,7 @@ import static me.ibore.http.Headers.VALUE_APPLICATION_URLENCODED;
 import static me.ibore.http.Headers.VALUE_KEEP_ALIVE;
 import static me.ibore.http.Headers.VALUE_USER_AGENT;
 
-public final class KalleConfig {
+public final class XHttpConfig {
 
     public static Builder newBuilder() {
         return new Builder();
@@ -56,13 +56,13 @@ public final class KalleConfig {
     private final CacheStore mCacheStore;
 
     private final Network mNetwork;
-    private final ConnectFactory mConnectFactory;
+    private final Connection.Factory mConnectFactory;
     private final CookieStore mCookieStore;
     private final List<Interceptor> mInterceptors;
 
     private final Converter mConverter;
 
-    private KalleConfig(Builder builder) {
+    private XHttpConfig(Builder builder) {
         this.mWorkExecutor = builder.mWorkExecutor == null ? new WorkExecutor() : builder.mWorkExecutor;
         this.mMainExecutor = builder.mMainExecutor == null ? new MainExecutor() : builder.mMainExecutor;
 
@@ -133,7 +133,7 @@ public final class KalleConfig {
         return mNetwork;
     }
 
-    public ConnectFactory getConnectFactory() {
+    public Connection.Factory getConnectFactory() {
         return mConnectFactory;
     }
 
@@ -166,7 +166,7 @@ public final class KalleConfig {
         private CacheStore mCacheStore;
 
         private Network mNetwork;
-        private ConnectFactory mConnectFactory;
+        private Connection.Factory mConnectFactory;
         private CookieStore mCookieStore;
         private List<Interceptor> mInterceptors;
 
@@ -294,7 +294,8 @@ public final class KalleConfig {
         /**
          * Global cookie store.
          */
-        public Builder connectFactory(ConnectFactory factory) {
+        // TODO
+        public Builder connectFactory(Connection.Factory factory) {
             this.mConnectFactory = factory;
             return this;
         }
@@ -331,8 +332,8 @@ public final class KalleConfig {
             return this;
         }
 
-        public KalleConfig build() {
-            return new KalleConfig(this);
+        public XHttpConfig build() {
+            return new XHttpConfig(this);
         }
     }
 

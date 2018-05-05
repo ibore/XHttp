@@ -2,7 +2,7 @@ package me.ibore.http.simple;
 
 import me.ibore.http.CancelerManager;
 import me.ibore.http.Canceller;
-import me.ibore.http.Kalle;
+import me.ibore.http.XHttp;
 
 import java.lang.reflect.Type;
 import java.util.concurrent.Executor;
@@ -29,7 +29,7 @@ public class RequestManager {
     private final CancelerManager mCancelManager;
 
     private RequestManager() {
-        this.mExecutor = Kalle.getConfig().getWorkExecutor();
+        this.mExecutor = XHttp.getConfig().getWorkExecutor();
         this.mCancelManager = new CancelerManager();
     }
 
@@ -121,7 +121,7 @@ public class RequestManager {
 
         AsyncCallback(Callback<S, F> callback) {
             this.mCallback = callback;
-            this.mExecutor = Kalle.getConfig().getMainExecutor();
+            this.mExecutor = XHttp.getConfig().getMainExecutor();
         }
 
         @Override

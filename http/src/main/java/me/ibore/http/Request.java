@@ -9,7 +9,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 public abstract class Request {
 
-    private final RequestMethod mMethod;
+    private final Method mMethod;
     private final Headers mHeaders;
 
     private final Proxy mProxy;
@@ -49,7 +49,7 @@ public abstract class Request {
     /**
      * Get method.
      */
-    public RequestMethod method() {
+    public Method method() {
         return mMethod;
     }
 
@@ -104,18 +104,18 @@ public abstract class Request {
 
     public static abstract class Api<T extends Api<T>> {
 
-        private final RequestMethod mMethod;
+        private final Method mMethod;
         private final Headers mHeaders = new Headers();
-        private Proxy mProxy = Kalle.getConfig().getProxy();
-        private SSLSocketFactory mSSLSocketFactory = Kalle.getConfig().getSSLSocketFactory();
-        private HostnameVerifier mHostnameVerifier = Kalle.getConfig().getHostnameVerifier();
-        private int mConnectTimeout = Kalle.getConfig().getConnectTimeout();
-        private int mReadTimeout = Kalle.getConfig().getReadTimeout();
+        private Proxy mProxy = XHttp.getConfig().getProxy();
+        private SSLSocketFactory mSSLSocketFactory = XHttp.getConfig().getSSLSocketFactory();
+        private HostnameVerifier mHostnameVerifier = XHttp.getConfig().getHostnameVerifier();
+        private int mConnectTimeout = XHttp.getConfig().getConnectTimeout();
+        private int mReadTimeout = XHttp.getConfig().getReadTimeout();
         private Object mTag;
 
-        protected Api(RequestMethod method) {
+        protected Api(Method method) {
             this.mMethod = method;
-            this.mHeaders.add(Kalle.getConfig().getHeaders());
+            this.mHeaders.add(XHttp.getConfig().getHeaders());
         }
 
         /**
